@@ -9,4 +9,4 @@ const DemoOut = (props) => {
   )
 }
 
-export default DemoOut
+export default React.memo(DemoOut)
