@@ -9,15 +9,24 @@ function App() {
   console.log("run")
   
   const [showP, setShowP] = useState(false)
+  const [allowToggle, setAllowToggle] = useState(false)
+
   const toggleHandler =useCallback(()=> {
-    setShowP(prevShowP => !prevShowP)
-  },[])
+    if (allowToggle){
+      setShowP(prevShowP =>  !prevShowP)
+    }
+  },[allowToggle])
+
+  const allowToggleHandler = () =>{
+    setAllowToggle(true)
+  }
 
   return (
     <div className="app">
       <h1>Hi there!</h1>
-      <DemoOut show={false}/>
+      <DemoOut show={showP}/>
       <Button onClick= {toggleHandler}>Toggle Paragraph!</Button>
+      <Button onClick= {allowToggleHandler}>Allow Toggling</Button>
     </div>
   );
 }
